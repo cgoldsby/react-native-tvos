@@ -10,6 +10,7 @@ package com.facebook.react.uiapp
 import android.os.Bundle
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.view.KeyEvent
 import android.view.View
 import android.widget.FrameLayout
 import androidx.core.view.ViewCompat
@@ -20,6 +21,7 @@ import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnable
 import com.facebook.react.defaults.DefaultReactActivityDelegate
 import java.io.FileDescriptor
 import java.io.PrintWriter
+import android.util.Log
 
 class RNTesterActivity : ReactActivity() {
   class RNTesterActivityDelegate(val activity: ReactActivity, mainComponentName: String) :
@@ -76,5 +78,15 @@ class RNTesterActivity : ReactActivity() {
       args: Array<String>?
   ) {
     FBRNTesterEndToEndHelper.maybeDump(prefix, writer, args)
+  }
+
+  override fun onDialogKeyUp(keyCode: Int, event: KeyEvent?): Boolean {
+    Log.i("RNTesterApp", "onDialogKeyUp was called")
+    return super.onDialogKeyUp(keyCode, event)
+  }
+
+  override fun onDialogKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+    Log.i("RNTesterApp", "onDialogKeyDown was called")
+    return super.onDialogKeyDown(keyCode, event)
   }
 }
