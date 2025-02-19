@@ -33,7 +33,8 @@
     "test": "jest",
     "fantom": "JS_DIR='..' yarn jest --config packages/react-native-fantom/config/jest.config.js",
     "trigger-react-native-release": "node ./scripts/releases-local/trigger-react-native-release.js",
-    "update-lock": "npx yarn-deduplicate"
+    "update-lock": "npx yarn-deduplicate",
+    "postinstall": "[ \"$PATCH\" = \"true\" ] && patch-package || echo \"Skipping postinstall.\""
   },
   "workspaces": [
     "packages/*",

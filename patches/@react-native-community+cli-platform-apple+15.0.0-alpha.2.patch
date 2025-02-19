@@ -1,0 +1,13 @@
+diff --git a/node_modules/@react-native-community/cli-platform-apple/build/commands/runCommand/createRun.js b/node_modules/@react-native-community/cli-platform-apple/build/commands/runCommand/createRun.js
+index db9c342..0e34726 100644
+--- a/node_modules/@react-native-community/cli-platform-apple/build/commands/runCommand/createRun.js
++++ b/node_modules/@react-native-community/cli-platform-apple/build/commands/runCommand/createRun.js
+@@ -127,7 +127,7 @@ const createRun = ({
+   if (devices.length === 0) {
+     return _cliTools().logger.error(`${platformReadableName} devices or simulators not detected. Install simulators via Xcode or connect a physical ${platformReadableName} device`);
+   }
+-  const fallbackSimulator = platformName === 'ios' ? (0, _getFallbackSimulator.getFallbackSimulator)(args) : devices[0];
++  const fallbackSimulator = platformName === 'ios' || platformName === 'tvos' ? (0, _getFallbackSimulator.getFallbackSimulator)(args) : devices[0];
+   if (args.listDevices || args.interactive) {
+     if (args.device || args.udid) {
+       _cliTools().logger.warn(`Both ${args.device ? 'device' : 'udid'} and "list-devices" parameters were passed to "run" command. We will list available devices and let you choose from one.`);
